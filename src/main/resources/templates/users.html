@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Panel administratora</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+</head>
+
+<body>
+<div class="jumbotron">
+    <h1 class="display-4">Witaj w panelu administratora!</h1>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" th:href="@{/admin}" role="button">Schowaj listę użytkowników</a>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Wyświetl menu</a>
+    <a class="btn btn-primary btn-lg" th:href="@{/}" role="button">Powrót na stronę główną</a>
+    <a class="btn btn-primary btn-lg" th:href="@{/logout}" role="button">Wyloguj się</a>
+
+</div>
+<tbody>
+<tr th:each="user:${users}">
+    <td><span th:text="${user.username}"> login </span></td>
+    <td><span th:text="${user.email}"> email </span></td>
+</tr>
+</tbody>
+
+</body>
+</html>
+
+
+
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Sale badge-->
+        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Special Item</h5>
+                <!-- Product reviews-->
+                <div class="d-flex justify-content-center small text-warning mb-2">
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                </div>
+                <!-- Product price-->
+                <span class="text-muted text-decoration-line-through">$20.00</span>
+                $18.00
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        </div>
+    </div>
+</div>
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Sale badge-->
+        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Sale Item</h5>
+                <!-- Product price-->
+                <span class="text-muted text-decoration-line-through">$50.00</span>
+                $25.00
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        </div>
+    </div>
+</div>
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Popular Item</h5>
+                <!-- Product reviews-->
+                <div class="d-flex justify-content-center small text-warning mb-2">
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                </div>
+                <!-- Product price-->
+                $40.00
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        </div>
+    </div>
+</div>
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Sale badge-->
+        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Sale Item</h5>
+                <!-- Product price-->
+                <span class="text-muted text-decoration-line-through">$50.00</span>
+                $25.00
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        </div>
+    </div>
+</div>
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Fancy Product</h5>
+                <!-- Product price-->
+                $120.00 - $280.00
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+        </div>
+    </div>
+</div>
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Sale badge-->
+        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Special Item</h5>
+                <!-- Product reviews-->
+                <div class="d-flex justify-content-center small text-warning mb-2">
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                </div>
+                <!-- Product price-->
+                <span class="text-muted text-decoration-line-through">$20.00</span>
+                $18.00
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        </div>
+    </div>
+</div>
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">Popular Item</h5>
+                <!-- Product reviews-->
+                <div class="d-flex justify-content-center small text-warning mb-2">
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                    <div class="bi-star-fill"></div>
+                </div>
+                <!-- Product price-->
+                $40.00
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<form method="post" th:object="${menuList2}">
+    <div th:if="${menu2.dostepne}==true">
+        <input type="number" th:field="*{ilosc}" class="form-control" min="0" max="100" />
+    </div>
+
+    <div th:if="${menu2.dostepne}==true">
+        <form th:action="@{koszyk}" method="post" th:object="${menu2}">
+            <input type="number" th:field="*{ilosc}" class="form-control" min="0" max="100" />
+    </div>
+
+    <div th:if="${menu2.dostepne}==true" class="text-center">
+        <input type="number" th:field="*{ilosc}" class="form-control" min="1" max="100" />
+    </div>
+
+    <form  th:href="@{'/koszyk/add + ${menu2.id} + / ${zamowienie.ilosc}}" method="post" th:object="${zamowienie}" th:if="${menu2.dostepne}==true">
+    </form>
+
+
+    <form  method="post" th:object="${zamowienie}" th:if="${menu2.dostepne}==true">
+        <input type="number"  th:value="${zamowienie.ilosc}" id="zamowienie_ilosc" name="zamowienie_ilosc" class="form-control" min="1" max="100" />
+        <div  class="text-center"><a  th:href ="@{'/koszyk/add/' + ${menu2.id} + '/' + ${zamowienie.ilosc}}"  class="btn btn-outline-dark mt-auto" > Dodaj do koszyka </a></div>
+    </form>
+
+    <script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	productId = "[[${menu2.id}]]";
+    quantity = "[[${zamowienie.ilosc}]]"
+</script>
+
+
+    <form method="POST" th:action="@{'/koszyk/add/' + ${menu2.id} + '/' + ${zamowienie.ilosc}}">
+
+        <input type="hidden" name="pid" id="pid" th:value="${menu2.id}" />
+
+        <div th:object="${zamowienie}">
+            <input type="number" name="qty" id="qty"  th:field="*{ilosc}" />
+        </div>
+
+        <button type="submit" name="submit" value="value" class="link-button text-center">Dodaj do koszyka</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <div th:replace="quantity_control :: quantity_control(${item.ilosc}. ${item.product.id})">Ilość</div>
+
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Przewidywany czas doręczenia</label>
+        <div class="col-sm-8">
+            <input type="text" id="czas_dostawy"  th:field="*{czas_dostawy}" />
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Archiwizuj </label>
+            <div class="col-sm-8">
+                <input type="checkbox" name = "archiwum" th:field="*{archiwum}" />
+                <h5>(PO ARCHIWIZACJI UŻYTKOWNIK STRACI PODGLĄD ZAMÓWIENIA! TYLKO PO DOSTARCZENIU!)</h5>
+            </div>
+
+            ${#calendars.format(cal, 'dd/MMM/yyyy HH:mm')}
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-8">
+                    <select th:field="*{status}" class="form-control">
+                        <option th:each="statusy: ${statusy}" th:value="${statusy.id}" th:text="${statusy.status}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-8">
+                    <select th:field="*{status}" class="form-control">
+                        <option th:each="statusy: ${statusy}" th:value="${statusy.id}" th:text="${statusy.status}"></option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class='col-xs-4 input-group date'>
+                    <label class="col-sm-4 col-form-label">Przewidywany czas dostawy:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control datepicker" th:field="*{czas_dostawy}" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+    </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pl.min.js"></script>

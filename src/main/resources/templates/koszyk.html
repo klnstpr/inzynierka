@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Koszyk</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div th:replace="menureplace :: menuX"></div>
+<!-- Section-->
+<section class="py-5">
+    <div>
+        <h2>Twój koszyk:</h2>
+        <div th:if="${ zamowienieList == null  || zamowienieList.isEmpty()}">
+            <h2> jest pusty!</h2>
+        </div>
+        <br/>
+    </div>
+
+    <div class="row m-1" th:unless="${ zamowienieList == null  || zamowienieList.isEmpty()}">
+        <div class = "col-sm-8">
+            <th:block th:each="item, status: ${zamowienieList}">
+                <div class="row border rounded p-1" th:with="product = ${item.foodItem}"  th:id="'row' + ${status.count}">
+                    <div class = "col-1">
+                        <div class="divCount">[[${status.count}]]</div>
+                        <div><a class="fa fa-trash-o linkRemove" style="font-size:32px;color:red" th:rowNumber="${status.count}" method="DELETE" th:href="@{'/koszyk/delete/' + ${product.id}}"></a> </div>
+
+                    </div>
+                    <div class="col-3">
+                        <img th:src="@{${product.url}}" class="img-fluid"/>
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <a>
+                                <b>
+                                   <h2>[[${product.nazwa}]]</h2>
+                                </b>
+                            </a>
+                        </div>
+
+
+
+                        <div>
+                            <span class="h4">[[${item.ilosc}]]X</span>
+                            <span class="h4">[[${product.cena}]]zł</span>
+                            <span>= </span> <span th:text="${item.cena_koncowa} % 1 == 0? ${item.cena_koncowa} :${#numbers.formatDecimal(item.cena_koncowa, 0, 2)}" class="h3">[[${item.cena_koncowa}]]zł</span>
+                        </div>
+                        <div>
+                            <a class="bi bi-dash-lg" style="font-size:32px;color:red" th:rowNumber="${status.count}" method="POST" th:href="@{'/koszyk/minus/' + ${product.id}}"></a>
+                            <a class="bi bi-plus-lg" style="font-size:32px;color:green" th:rowNumber="${status.count}" method="POST" th:href="@{'/koszyk/plus/' + ${product.id}}"></a>
+                         </div>
+                        <div>
+                            <h5>Dodaj uwagę do potrawy: </h5>
+                            <a class="bi bi-chat-square-text" style="font-size:32px;color:green" th:rowNumber="${status.count}" method="POST" th:href="@{'/koszyk/uwagi/' + ${item.id}}"></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-1">&nbsp;</div>
+            </th:block>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                <span class="h3">Cena końcowa: </span>
+            </div>
+            <div class="mt-2">
+                <span class="h2">[[${cena_zamowienia}]]zł</span>
+            </div>
+            <div class="mt-2">
+
+                <form method="POST"  th:action="@{'/koszyk/platnosc/' + ${user_id}}">
+                <button class="btn btn-danger p-3 mt-2">Zapłać</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Życzymy smacznego : )</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+<script type="text/javascript" src="/js/koszyk_plus.js"></script>
+<script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
+<script type="text/javascript" th:src="@{/js/test.js}" ></script>
+</body>
+</html>

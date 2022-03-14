@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Panel administratora</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+</head>
+
+<body>
+<div class="jumbotron">
+    <h1 class="display-4">Witaj w panelu administratora!</h1>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" th:href="@{/admin/zamowienia}" role="button">Wyświetl panel zamówień</a>
+    <a class="btn btn-primary btn-lg" th:href="@{/admin/users}" role="button">Wyświetl listę użytkowników</a>
+    <a class="btn btn-primary btn-lg" th:href="@{/admin}" role="button">Schowaj menu</a>
+    <a class="btn btn-primary btn-lg" th:href="@{/}" role="button">Powrót na stronę główną</a>
+    <a class="btn btn-primary btn-lg" th:href="@{/logout}" role="button">Wyloguj się</a>
+
+</div>
+<tbody>
+<tr th:if="${ menuList == null  || menuList.isEmpty()}">
+    <td colspan="2"> Menu jest puste! </td>
+</tr>
+</tbody>
+<tbody><div th:if="${message}" class="alert alert-success text-center"> [[${message}]] </div></tbody>
+<tbody>
+<table class = "table table-bordered">
+    <thead class="thead-dark">
+    </tr>
+    <th>ID</th>
+    <th>Nazwa</th>
+    <th>Cena</th>
+    <th>Opis</th>
+    <th>Dostepne</th>
+    <th>Zdjęcie</th>
+    <th><a th:href="@{/admin/menu/add}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Dodaj nowego danie</a></th>
+    </thead>
+    <th:block th:each="menu :${menuList}">
+        <tr>
+            <td>[[${menu.id}]]</td>
+            <td>[[${menu.nazwa}]]</td>
+            <td>[[${menu.cena}]]</td>
+            <td>[[${menu.opis}]]</td>
+            <td>[[${menu.dostepne}]]</td>
+            <td>[[${menu.url}]]</td>
+            <td>
+                <a class = "h4 mr-3"  th:href = "@{'/admin/menu/edit/' + ${menu.id}}">Edytuj</a>
+                <a class = "h4 mr-3"  style="color:red" th:data-confirm-delete="|Czy na pewno chcesz usunąć danie: ${menu.nazwa}?|" onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false" th:href = "@{'/admin/menu/delete/' + ${menu.id}}">Usuń </a>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

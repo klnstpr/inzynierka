@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Navigation-->
+<div th:fragment="menuX" id="menuX">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" th:href="@{/}">Strona główna</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+
+                <div sec:authorize="!isFullyAuthenticated()">
+                    <li class="nav-item" ><a class="nav-link active" aria-current="page" th:href="@{/login}">Zaloguj się</a></li>
+                </div>
+
+                <div sec:authorize="!isFullyAuthenticated()">
+                    <li class="nav-item" ><a class="nav-link active" aria-current="page" th:href="@{user/register}">Zarejestruj się</a></li>
+                </div>
+                <div sec:authorize="hasRole('ADMIN')">
+                    <li class="nav-item" ><a class="nav-link active" aria-current="page" th:href="@{/admin}">Panel administratora</a></li>
+                </div>
+                <div sec:authorize="isFullyAuthenticated()">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Użytkownik
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{/uzytkownik/adres}">Twój adres do dostawy</a>
+                            <a class="dropdown-item" th:href="@{/logout}">Wyloguj się</a>
+                        </div>
+                    </li>
+
+                </div>
+                <li class="nav-item" ><a class="nav-link active" th:href="@{/about}">O nas</a></li>
+                <li class="nav-item" ><a class="nav-link active" th:href="@{/kontakt}">Kontakt</a></li>
+            </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    <a th:href="@{koszyk}">Koszyk</a>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill"  >[[${quantity}]]</span>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Restauracja</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Zamawiaj swoje ulubione potrawy online!</p>
+        </div>
+    </div>
+</header>
+</div>
+</body>
+</html>

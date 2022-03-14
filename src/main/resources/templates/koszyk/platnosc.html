@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Płatność</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="menureplace :: menuX"></div>
+<!-- Section-->
+<div class="py-5">
+    <div class="text-center">
+        <h2>Podsumowanie</h2>
+    </div>
+
+    <div class="row m-1" th:unless="${ user.address == null }">
+        <div class="col-sm-8">
+            <div class="card" >
+                <th:block th:each="user : ${user}">
+                <div class="card-header"><h3>Informacje o dostawie:</h3></div>
+                <div class="card-body"  >
+                <div th:with="adres = ${user.address}">
+                    <p>
+                    <h4>Dane kupującego:</h4>&nbsp; <b>Imie:</b> [[${user.imie}]]
+                    <b>Nazwisko:</b> [[${user.nazwisko}]]
+                    <b>Telefon:</b> [[${user.telefon}]]
+                <b>  Miasto:</b> [[${adres.miasto}]]
+                    <b> Ulica:</b> [[${adres.ulica}]] [[${adres.numer_budynku}]]/[[${adres.numer_lokalu}]]
+                        <a th:href="@{/uzytkownik/adres}">[Dostarcz pod inny adres]</a>
+                    </p>
+                    <p>
+                        <h4>Czas dostawy: </h4> Zazwyczaj 30-40 minut. Dokładny czas zostanie podany po przyjęciu zamówienia.
+                    </p>
+                </div>
+                </div>
+                </th:block>
+            </div>
+
+
+
+            </div>
+        </div>
+    <div class="row m-1" >
+        <div class="card-header "><h5>Podsumowanie zamówienia</h5></div>
+        <div class="card-body ow-break-word" >
+
+            <div >
+                <table >
+                    <th:block th:each="item : ${zamowienieList}">
+                        <tr th:with="product = ${item.foodItem}">
+                            <td>[[${item.ilosc}]] X [[${product.nazwa}]] = [[${item.cena_koncowa}]] zł
+
+                                <p>
+                                    <a >
+                                        Uwagi: [[${item.dodatkowe_informacje}]]
+                                    </a>
+                                </p>
+                                <br/>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </th:block>
+                    <tr><td colspan="3"><hr/></tr>
+                </table>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">Produkty: </div>
+                <div class="col"><div>[[${cena_zamowienia}]] zł</div></div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">Dostawa: </div>
+                <div class="col"><div>0 zł </div></div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">Suma całkowita: </div>
+                <div class="col"><b><div>[[${cena_zamowienia}]] zł</div></b></div>
+            </div>
+        </div>
+    </div>
+        </div>
+</div>
+    <div class="card mt-3 mb-3" th:unless="${ user.address == null }">
+        <div class="card-header"><h5>Metoda płatności</h5></div>
+        <div class="card-body">
+            <div>Potwierdzam i płacę gotówką (przy odbiorze):  </div>
+            <div><a class="bi bi-cash" style="font-size:64px;color:green"  th:href="@{gotowka}"></a></div>
+            <div>Potwierdzam i płacę online:  </div>
+            <div><a class="bi bi-credit-card"style="font-size:64px;color:blue"  th:href="@{online}"></a></div>
+        </div>
+    </div>
+    <div class="card-body" th:if="${ user.address == null }">
+        <p>
+        <h4>Adres dostawy nie został podany!</h4>&nbsp;
+        <a th:href="@{/uzytkownik/adres}">Wprowadź adres</a>
+    </div>
+<a th:href="@{/koszyk}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Powróć do koszyka</a>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Życzymy smacznego : )</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Core theme JS-->
+
+
+<script src="/js/scripts.js"></script>
+<script type="text/javascript" src="/js/platnosc.js"></script>
+<script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
+<script type="text/javascript" th:src="@{/js/test.js}" ></script>
+
+</body>
+</html>

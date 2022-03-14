@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Strona główna</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- Navigation-->
+<div th:replace="menureplace :: menuX"></div>
+<!-- Section-->
+<section class="py-5">
+    <h5>Ups, płatność nie powiodła się</h5>
+    <a th:href="@{/koszyk}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Spróbuj ponownie</a>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Życzymy smacznego : )</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Core theme JS-->
+
+
+<script src="/js/scripts.js"></script>
+<script type="text/javascript" src="/js/koszyk_plus.js"></script>
+<script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
+<script type="text/javascript" th:src="@{/js/test.js}" ></script>
+
+</body>
+</html>
